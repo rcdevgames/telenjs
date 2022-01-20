@@ -105,11 +105,6 @@ const renewMessage = async (client: TelegramClient, dialog: Dialog) => {
     data.forEach((v) => {
         let detailMessage = '';
 
-        if (v.replyTo !== null) {
-            detailMessage += `Reply: ${v.replyToMsgId}\n`;1
-        }
-
-
         if (v.out) {
             detailMessage += `${v.id}${v.replyTo !== null ? ` => ${v.replyToMsgId}`:''} | [${v.date}] [Me] => ${v.message}`;
         }else {
