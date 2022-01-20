@@ -1,4 +1,4 @@
-import { TelegramClient } from 'telegram'
+import { Api, TelegramClient } from 'telegram'
 import { StringSession }  from 'telegram/sessions'
 import input from 'input'; // npm i input
 import { Dialog } from 'telegram/tl/custom/dialog';
@@ -56,9 +56,13 @@ const initUser = async () => {
 }
 
 const startMessage = async (client: TelegramClient) => {
-    console.clear();
+    console.clear();    
+
+    let usr = await client.getMe();
+    
     console.log("--------------------------------------------------------------------------------------")
     console.log('You should now be connected.');
+    console.log(`${usr['username']} | ${usr['phone']}`);
     console.log("--------------------------------------------------------------------------------------");
 
     const dialogList = await client.getDialogs({});
